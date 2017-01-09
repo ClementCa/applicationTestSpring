@@ -5,8 +5,8 @@
     <bean name="customerRepository"
           class="com.my.app.repository.HibernateCustomerRepositoryImpl" />
     <bean name="customerService"
-        class="com.my.app.services.CustomerServiceImpl">
-        <property name="customerRepository" ref="customerRepository"/>
+        class="com.my.app.services.CustomerServiceImpl" autowire="byName">
+       <!-- <constructor-arg index="0" ref="customerRepository"/> -->
     </bean>
 
 </beans>
