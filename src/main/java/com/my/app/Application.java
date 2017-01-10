@@ -1,14 +1,13 @@
 package com.my.app;
 
 import com.my.app.services.CustomerService;
-import com.my.app.services.CustomerServiceImpl;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-/**
- * Created by CCA3441 on 09/01/2017.
- */
 public class Application {
     public static void main(String[] args){
-        CustomerService service = new CustomerServiceImpl();
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
+        CustomerService service = applicationContext.getBean("customerService",CustomerService.class);
         System.out.println(service.findAll().get(0).getFirstName());
     }
 }
